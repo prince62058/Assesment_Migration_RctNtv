@@ -20,13 +20,27 @@ const vehicleRoutes = require("./routes/vehicleRoutes");
 const allowedOrigins = [
   "http://localhost:5173", // local dev
   "http://localhost:3000", // local dev alternative
-  "https://vehicle-validator-frontend-kdrzkogld.vercel.app", // Vercel deployed URL
   process.env.FRONTEND_URL, // Additional frontend URL from env
 ].filter(Boolean); // Remove undefined values
 
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+
+      // Allow all Vercel domains
+      if (origin.includes(".vercel.app")) {
+        return callback(null, true);
+      }
+
+      // Check if origin is in allowed list
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        return callback(null, true);
+      }
+
+      callback(new Error("Not allowed by CORS"));
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
