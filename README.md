@@ -322,14 +322,15 @@ npm run ios
 | Service | URL | Status |
 |---------|-----|--------|
 | **Backend API** | [https://vechile-validator-backend-im0r.onrender.com](https://vechile-validator-backend-im0r.onrender.com) | ✅ Live |
-| **Frontend Web** | Deploy on Render/Vercel | 🚀 Ready |
+| **Frontend Web** | [https://vehicle-validator-frontend-kdrzkogld.vercel.app](https://vehicle-validator-frontend-kdrzkogld.vercel.app) | ✅ Live |
 | **Repository** | [https://github.com/prince62058/Assesment_Migration_RctNtv](https://github.com/prince62058/Assesment_Migration_RctNtv) | ✅ Live |
 
 ### Deployment Guides
 
 - 📘 **Frontend on Vercel**: See `VERCEL_DEPLOYMENT_GUIDE.md`
 - 📗 **Frontend on Render**: See `RENDER_FRONTEND_DEPLOYMENT_GUIDE.md`
-- 📙 **Backend on Render**: Already deployed
+- 📙 **Deployment Configuration**: See `DEPLOYMENT_CONFIG.md`
+- 📕 **Backend on Render**: Already deployed
 
 ---
 
