@@ -58,12 +58,12 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Helper to quickly check if logged in
+
   const isAuthenticated = () => {
     return !!token && !!user;
   };
 
-  // The collection of data and functions we want to share with the app
+
   const value = {
     user,
     token,
@@ -73,6 +73,6 @@ export const AuthProvider = ({ children }) => {
     loading,
   };
 
-  // Render the Provider with the value, wrapping the children (our app screens)
+
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
