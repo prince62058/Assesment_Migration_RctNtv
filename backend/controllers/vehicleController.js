@@ -1,10 +1,20 @@
 const Vehicle = require('../models/vehicle');
 exports.createVehicle = async (req, res) => {
   try {
-    const vehicle = await Vehicle.create({ ...req.body, createdBy: req.user._id });
+    const { vehicleNumber, passNumber } = req.body;
+
+    const alreadyExists = await Vehicle.findOne({ $or: [{ vehicleNumber }, { passNumber }], });
+
+    if (alreadyExists) {
+      return res.status(400).json({ message: "Vehicle already present" });
+    }
+    const vehicle = await Vehicle.create({ ...req.body, createdBy: req.user._id, });
+
     res.status(201).json(vehicle);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to create vehicle', error: error.message });
+    res
+      .status(500)
+      .json({ message: "Failed to create vehicle", error: error.message });
   }
 };
 exports.getVehicles = async (req, res) => {
